@@ -2,15 +2,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Tours.Models
 {
-    public class Service
+    public class Vehicle
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(50)]
         public string Name { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        [StringLength(50)]
+        public string Seat { get; set; }
         [Required]
-        public string Description { get; set; }
+        public decimal Price {get; set; }
     }
 }

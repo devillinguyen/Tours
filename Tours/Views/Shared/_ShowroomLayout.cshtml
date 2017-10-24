@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Tours</title>
+    <title>@ViewBag.Title - Website Du Lịch</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,16 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Package", "Index", "Packages", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Vehicle", "Index", "Vehicles")</li>
-                    <li>@Html.ActionLink("Service", "Index", "Services")</li>
-                    <li>@Html.ActionLink("Tour", "Index", "Tours")</li>
-                    <li>@Html.ActionLink("Show room", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>
+                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
@@ -34,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Tours</p>
+            <p>&copy; @DateTime.Now.Year - Website Du Lịch</p>
         </footer>
     </div>
 
