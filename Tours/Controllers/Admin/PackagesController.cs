@@ -18,6 +18,7 @@ namespace Tours.Controllers.Admin
             _dbContext = new ApplicationDbContext();
         }
         // GET: Packages
+        [Authorize]
         public ActionResult Index()
         {
             var packages = _dbContext.Packages
@@ -34,6 +35,7 @@ namespace Tours.Controllers.Admin
             var package = _dbContext.Packages.Single(p => p.Id == id);
             var viewModel = new PackageViewModel
             {
+                Id = id,
                 Tour = _dbContext.Tours.Single(t => t.Id == package.TourId),
                 Service = _dbContext.Services.Single(s => s.Id == package.ServiceId),
                 Vehicle = _dbContext.Vehicles.Single(v => v.Id == package.VehicleId),
@@ -122,11 +124,12 @@ namespace Tours.Controllers.Admin
             var package = _dbContext.Packages.Single(p => p.Id == id);
             var viewModel = new PackageViewModel
             {
-                Id = package.Id,
+                Id = id,
                 TourId = package.TourId,
                 ServiceId = package.ServiceId,
                 VehicleId = package.VehicleId,
                 Quantity = package.QuantityVehi.ToString(),
+                Total = package.Total.ToString(),
                 Tours = _dbContext.Tours.ToList(),
                 Services = _dbContext.Services.ToList(),
                 Vehicles = _dbContext.Vehicles.ToList(),
@@ -139,6 +142,7 @@ namespace Tours.Controllers.Admin
         }
 
         // POST: Packages/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PackageViewModel viewModel)
@@ -195,6 +199,7 @@ namespace Tours.Controllers.Admin
         }
 
         // POST: Packages/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(PackageViewModel viewModel)
         {

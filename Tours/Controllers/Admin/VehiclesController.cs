@@ -23,7 +23,7 @@ namespace Tours.Controllers.Admin
             var vehicles = _dbContext.Vehicles.ToList();
             return View(vehicles);
         }
-
+        
         // GET: Vehicle/Details/5
         public ActionResult Details(int id)
         {
@@ -36,6 +36,7 @@ namespace Tours.Controllers.Admin
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Vehicle/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -70,6 +71,7 @@ namespace Tours.Controllers.Admin
             return View("Edit", viewModel);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Vehicle/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -100,6 +102,7 @@ namespace Tours.Controllers.Admin
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Vehicle/Delete/5
         [HttpPost]
         public ActionResult Delete(VehicleViewModel viewModel)

@@ -16,6 +16,8 @@ namespace Tours.Controllers.Admin
         {
             _dbContext = new ApplicationDbContext();
         }
+
+        [Authorize]
         // GET: Services
         public ActionResult Index()
         {
@@ -36,6 +38,7 @@ namespace Tours.Controllers.Admin
         }
 
         // POST: Services/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ServiceViewModel viewModel)
@@ -70,7 +73,9 @@ namespace Tours.Controllers.Admin
         }
 
         // POST: Services/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(ServiceViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -100,6 +105,7 @@ namespace Tours.Controllers.Admin
         }
 
         // POST: Services/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(ServiceViewModel viewModel)
         {
