@@ -5,71 +5,30 @@
     Layout = "~/Views/Shared/_ShowroomLayout.cshtml";
 }
 
-<h2>TourDetail</h2>
+<h2>@Model.Name</h2>
 
-<div>
-    <h4>Tour</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Place)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Place)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cover)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cover)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Images1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Images1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Images2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Images2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+<div class="row">
+    <div class="col-md-3">
+        <img class="img-responsive img-rounded" alt="Image" style="width: 100%;" src="@Html.Raw(Model.Cover)" />
+    </div>
+    <div class="col-lg-9">
+        <div class="text-danger text-center">
+            <h3>@Model.Place</h3>
+        </div>
+        <div>
+            @Model.Description
+        </div>
+        <div>
+            @Model.Price
+        </div>
+    </div>
 </div>
-<p>
-    <a href="@Url.Action("Create","Packages", new {id = Model.Id},"")">Đặt</a>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row">
+    <div class="col-md-6">
+        <img class="img-responsive" style="width: 400px;" alt="Image" src="@Model.Images1"/>
+    </div>
+    <div class="col-md-6">
+        <img class="img-responsive" style="width: 400px;" alt="Image" src="@Model.Images2" />
+    </div>
+</div>
+<a href="@Url.Action("Create", "Packages", new {id = Model.Id})" class="btn btn-danger" role="button">Đặt</a>

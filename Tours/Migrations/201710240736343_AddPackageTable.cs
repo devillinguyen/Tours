@@ -17,6 +17,10 @@ namespace Tours.Migrations
                         VehicleId = c.Int(nullable: false),
                         QuantityVehi = c.Int(nullable: false),
                         Total = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CustomerName = c.String(nullable: false, maxLength: 50),
+                        CustomerEmail = c.String(nullable: false, maxLength: 50),
+                        CustomerPhoneNumber = c.String(nullable: false, maxLength: 11),
+                        CustomerAddress = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Services", t => t.ServiceId)

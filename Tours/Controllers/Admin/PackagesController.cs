@@ -31,7 +31,23 @@ namespace Tours.Controllers.Admin
         // GET: Packages/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var package = _dbContext.Packages.Single(p => p.Id == id);
+            var viewModel = new PackageViewModel
+            {
+                Tour = _dbContext.Tours.Single(t => t.Id == package.TourId),
+                Service = _dbContext.Services.Single(s => s.Id == package.ServiceId),
+                Vehicle = _dbContext.Vehicles.Single(v => v.Id == package.VehicleId),
+                TourId = package.TourId,
+                ServiceId = package.ServiceId,
+                VehicleId = package.VehicleId,
+                Quantity = package.QuantityVehi.ToString(),
+                Total = package.Total.ToString(),
+                CustomerName = package.CustomerName,
+                CustomerEmail = package.CustomerEmail,
+                CustomerPhoneNumber = package.CustomerPhoneNumber,
+                CustomerAddress = package.CustomerAddress
+            };
+            return View(viewModel);
         }
 
         // GET: Packages/Create
@@ -88,7 +104,11 @@ namespace Tours.Controllers.Admin
                 ServiceId = viewModel.ServiceId,
                 VehicleId = viewModel.VehicleId,
                 QuantityVehi = quantity,
-                Total = total
+                Total = total,
+                CustomerName = viewModel.CustomerName,
+                CustomerEmail = viewModel.CustomerEmail,
+                CustomerPhoneNumber = viewModel.CustomerPhoneNumber,
+                CustomerAddress = viewModel.CustomerAddress
             };
             
             _dbContext.Packages.Add(package);
@@ -102,19 +122,25 @@ namespace Tours.Controllers.Admin
             var package = _dbContext.Packages.Single(p => p.Id == id);
             var viewModel = new PackageViewModel
             {
+                Id = package.Id,
                 TourId = package.TourId,
                 ServiceId = package.ServiceId,
                 VehicleId = package.VehicleId,
                 Quantity = package.QuantityVehi.ToString(),
                 Tours = _dbContext.Tours.ToList(),
                 Services = _dbContext.Services.ToList(),
-                Vehicles = _dbContext.Vehicles.ToList()
+                Vehicles = _dbContext.Vehicles.ToList(),
+                CustomerName = package.CustomerName,
+                CustomerEmail = package.CustomerEmail,
+                CustomerPhoneNumber = package.CustomerPhoneNumber,
+                CustomerAddress = package.CustomerAddress
             };
             return View(viewModel);
         }
 
         // POST: Packages/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(PackageViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -136,6 +162,10 @@ namespace Tours.Controllers.Admin
             var vehicle = _dbContext.Vehicles.Single(t => t.Id == viewModel.VehicleId);
             decimal total = tour.Price + service.Price + vehicle.Price * package.QuantityVehi;
             package.Total = total;
+            package.CustomerName = viewModel.CustomerName;
+            package.CustomerEmail = viewModel.CustomerEmail;
+            package.CustomerPhoneNumber = viewModel.CustomerPhoneNumber;
+            package.CustomerAddress = viewModel.CustomerAddress;
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -155,7 +185,11 @@ namespace Tours.Controllers.Admin
                 Total = package.Total.ToString(),
                 Tour = _dbContext.Tours.Single(t => t.Id == package.TourId), // Gọi đến bảng Tours
                 Service = _dbContext.Services.Single(s => s.Id == package.ServiceId), // Gọi đến bảng Services
-                Vehicle = _dbContext.Vehicles.Single(v => v.Id == package.VehicleId) //Gọi đến bảng Vehicles
+                Vehicle = _dbContext.Vehicles.Single(v => v.Id == package.VehicleId), //Gọi đến bảng Vehicles
+                CustomerName = package.CustomerName,
+                CustomerEmail = package.CustomerEmail,
+                CustomerPhoneNumber = package.CustomerPhoneNumber,
+                CustomerAddress = package.CustomerAddress
             };
             return View(viewModel);
         }

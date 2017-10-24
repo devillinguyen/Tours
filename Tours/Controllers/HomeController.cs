@@ -27,7 +27,7 @@ namespace Tours.Controllers
             var tour = _dbContext.Tours.Single(t => t.Id == id);
             var viewModel = new TourViewModel
             {
-                Id = tour.Id,
+                Id = id,
                 Name = tour.Name,
                 Place = tour.Place,
                 Price = tour.Price.ToString(),

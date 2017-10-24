@@ -32,5 +32,17 @@ namespace Tours.ViewModels
         public Tour Tour { get; set; }
         public Service Service { get; set; }
         public Vehicle Vehicle { get; set; }
+        // For Customer
+        [Display(Name = "Họ Tên")]
+        [Required(ErrorMessage = "Chưa nhập Tên")]
+        public string CustomerName { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Chưa nhập Email")]
+        public string CustomerEmail { get; set; }
+        [Display(Name = "Số điện thoại")]
+        [Required(ErrorMessage = "Chưa nhập số điện thoại liên lạc")]
+        public string CustomerPhoneNumber { get; set; }
+        [Display(Name = "Địa chỉ khách hàng")]
+        public string CustomerAddress { get; set; }
     }
 }

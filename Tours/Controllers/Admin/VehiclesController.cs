@@ -17,6 +17,7 @@ namespace Tours.Controllers.Admin
             _dbContext = new ApplicationDbContext();
         }
         // GET: Vehicle
+        [Authorize]
         public ActionResult Index()
         {
             var vehicles = _dbContext.Vehicles.ToList();

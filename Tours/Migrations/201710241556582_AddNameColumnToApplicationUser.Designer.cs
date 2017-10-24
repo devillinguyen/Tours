@@ -7,13 +7,13 @@ namespace Tours.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddPackageTable : IMigrationMetadata
+    public sealed partial class AddNameColumnToApplicationUser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPackageTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNameColumnToApplicationUser));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710240612589_AddPackageTable"; }
+            get { return "201710241556582_AddNameColumnToApplicationUser"; }
         }
         
         string IMigrationMetadata.Source

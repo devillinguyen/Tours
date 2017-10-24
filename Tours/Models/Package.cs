@@ -23,5 +23,17 @@ namespace Tours.Models
         public Tour Tour { get; set; }
         public Service Service { get; set; }
         public Vehicle Vehicle { get; set; }
+        // Người dùng
+        [Required]
+        [StringLength(50)]
+        public string CustomerName { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string CustomerEmail { get; set; }
+        [Required]
+        [StringLength(11)]
+        public string CustomerPhoneNumber { get; set; }
+        public string CustomerAddress { get; set; }
+        
     }
 }
