@@ -54,7 +54,8 @@ namespace Tours.Controllers.Admin
                 Cover = viewModel.Cover,
                 Images1 = viewModel.Images1,
                 Images2 = viewModel.Images2,
-                Description = viewModel.Description
+                Description = viewModel.Description,
+                TourNoiBat = viewModel.TourNoiBat
             };
             _dbContext.Tours.Add(tour);
             _dbContext.SaveChanges();
@@ -74,7 +75,8 @@ namespace Tours.Controllers.Admin
                 Cover = tour.Cover,
                 Images1 = tour.Images1,
                 Images2 = tour.Images2,
-                Description = tour.Description
+                Description = tour.Description,
+                TourNoiBat = tour.TourNoiBat
                 
             };
             return View(viewModel);
@@ -98,6 +100,7 @@ namespace Tours.Controllers.Admin
             tour.Images1 = viewModel.Images1;
             tour.Images2 = viewModel.Images2;
             tour.Description= viewModel.Description;
+            tour.TourNoiBat = viewModel.TourNoiBat;
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -115,7 +118,9 @@ namespace Tours.Controllers.Admin
                 Cover = tour.Cover,
                 Images1 = tour.Images1,
                 Images2 = tour.Images2,
-                Description = tour.Description
+                Description = tour.Description,
+                TourNoiBat = tour.TourNoiBat,
+                
             };
             return View(viewModel);
         }

@@ -52,5 +52,24 @@ namespace Tours.Controllers
 
             return View();
         }
+        // GET: NOibat
+        public ActionResult NoiBat()
+        {
+            var tours = _dbContext.Tours
+                .Where(t => t.TourNoiBat == true)
+                .ToList(); 
+            return View(tours);
+        }
+        // GET
+        public ActionResult TimKiem()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult KQTimKiem(TourViewModel viewModel)
+        {
+            var tour = _dbContext.Tours.Single(t => t.Name == viewModel.Name);
+            return View(tour);
+        }
     }
 }

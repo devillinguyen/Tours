@@ -23,5 +23,6 @@ namespace Tours.Models
         public string Images1 { get; set; }
         public string Images2 { get; set; }
         public string Description { get; set; }
+        public bool TourNoiBat { get; set; }
     }
 }

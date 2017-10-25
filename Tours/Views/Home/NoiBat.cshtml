@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Tours.Models.Tour>
+
+@{
+    ViewBag.Title = "NoiBat";
+    Layout = "~/Views/Shared/_ShowroomLayout.cshtml";
+}
+
+<h2>NoiBat</h2>
+
+<div class="row">
+    @foreach (var tour in Model)
+    {
+        <div class="col-md-3 col-sm-6 col-xs-12" style="background-color: blanchedalmond; border-radius: 2%;">
+            <div style="color: lightseagreen">
+                <h4>@tour.Name</h4>
+            </div>
+            <div>
+                <a href="@Url.Action("TourDetail", "Home", new {id = tour.Id})"><img class="img-responsive img-rounded" alt="Image" style="width: 350px; height: 400px" src="@tour.Cover" /></a>
+            </div>
+            <div>
+                Đơn giá: @tour.Price
+            </div>
+            <a href="@Url.Action("TourDetail", "Home", new {id = tour.Id})" class="btn btn-danger" role="button">Chi tiết</a>
+            <a href="@Url.Action("Create", "Packages", new {id = tour.Id})" class="btn btn-danger" role="button">Đặt</a>
+        </div>
+    }
+</div>

@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201710241556582_AddNameColumnToApplicationUser.Designer.cs">
       <DependentUpon>201710241556582_AddNameColumnToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710250301328_AddTourNoiBatColumnToTour.cs" />
+    <Compile Include="Migrations\201710250301328_AddTourNoiBatColumnToTour.Designer.cs">
+      <DependentUpon>201710250301328_AddTourNoiBatColumnToTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -318,6 +322,9 @@
     <Content Include="Views\Packages\Edit.cshtml" />
     <Content Include="Views\Packages\Delete.cshtml" />
     <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Home\NoiBat.cshtml" />
+    <Content Include="Views\Home\TimKiem.cshtml" />
+    <Content Include="Views\Home\KQTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710241556582_AddNameColumnToApplicationUser.resx">
       <DependentUpon>201710241556582_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710250301328_AddTourNoiBatColumnToTour.resx">
+      <DependentUpon>201710250301328_AddTourNoiBatColumnToTour.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
